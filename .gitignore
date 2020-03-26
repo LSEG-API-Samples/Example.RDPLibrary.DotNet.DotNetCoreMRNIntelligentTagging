@@ -1,0 +1,13 @@
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
+.vs
+.idea
+publish
+global.json
+release_build
+release
+Output-Build.txt
