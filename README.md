@@ -1,0 +1,2 @@
+# Example.RDP.MRNIntelligentTagging
+The .NET Core sample app use Intelligent Tagging REST API to analyze the input text from the MRN news story retrieved from deployed TREP server or ERT in cloud . It uses RDP.NET library to communicating and retrieving MRN News Story from the server. And then, extract the news body from the MRN JSON message and pass it to the Intelligent Tagging API to identify tags and relevant metadata. 
