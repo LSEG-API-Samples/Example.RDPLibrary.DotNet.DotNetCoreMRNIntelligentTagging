@@ -4,7 +4,7 @@
 
 [Intelligent Tagging REST API](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api) can use to automatically analyzes your input text. And then identify and tag mentions (text strings) of things like companies, people, deals, geographical locations, industries, physical assets, organizations, products, events, etc. based on a list of predefined metadata types. Moreover, it can assigns tags such as topic tags, social tags, industry tags, and slugline tags that describe what the input document is about as a whole. 
 
-There are some use cases that users want to extract the tags(e.g., social tags) and metadata like the importance and confidence score from news content that came with the [MRN Story Real-Time](https://developers.refinitiv.com/sites/default/files/ThomsonReutersMRNElektronDataModelsv210_2.pdf) data and MRN achieved(custom solution provided by Elektron). Then it can feed the output from Intelligent Tagging API to their own sentiment analysis system. This article will describe steps to use the REST API to analyze the input text from the MRN news story retrieved from deployed TREP server or [Elektron Real-Time(ERT)](https://developers.refinitiv.com/elektron/websocket-api/learning?content=63493&type=learning_material_item) in Cloud. We will create a .NET Core sample application that is using RDP.NET API to communicating and retrieving MRN News Story from the server. And then, extract the news body from the MRN JSON message and pass it to the Intelligent Tagging API to identify tags and relevant metadata. 
+There are some use cases that users want to extract the tags(e.g., social tags) and metadata like the Company and Person entity with the relevance and confidence score from news content that came with the [MRN Story Real-Time](https://developers.refinitiv.com/sites/default/files/ThomsonReutersMRNElektronDataModelsv210_2.pdf) data and MRN achieved(custom solution provided by Elektron). Then it can feed the output from Intelligent Tagging API to their sentiment analysis system. This article will describe steps to use the REST API to analyze the input text from the MRN news story retrieved from the deployed TREP server or [Elektron Real-Time(ERT)](https://developers.refinitiv.com/elektron/websocket-api/learning?content=63493&type=learning_material_item) in cloud. We will create a .NET Core sample application that is using RDP.NET API to communicating and retrieving MRN News Story from the server. And then, extract the news body from the MRN JSON message and pass it to the Intelligent Tagging API to identify tags and relevant metadata.
 
 ## Prerequisites
 
@@ -801,11 +801,11 @@ confidence:
 
 ========================================
 ```
-Note that you can set __redirectOutputToFile__ in Program.cs to true if you want to redirect the console output to file instead.
+Note that you can set __redirectOutputToFile__ in Program.cs to true if you want to redirect the console output to file named Output.txt instead.
 
 ## Summary 
 
-This article explains how to use Intelligent Tagging REST API getting tag metadata from a news content returned by MRN Story data. It also provides a sample application to demonstrate the API usage and provide a sample output from the REST API and how to extract the relevance tag and entity from the JSON output. The sample app uses RDP.NET to retrieve the MRN STORY from ERT in the cloud or local deployed TREP.  The use case can be a solution for the client who needs to implement standard tagging across their news repository, using PermID. Intelligent Tagging API also offers a socialTags with relevance scoring for the clients. The client can feed the output provided by the API to the external system for sentiment analysis.
+This article explains how to use Intelligent Tagging REST API getting tag metadata from a news content returned by MRN Story data. It also provides a sample application to demonstrate the API usage and provide a sample output from the REST API and how to extract the relevance tag and entity from the JSON output. The sample app uses RDP.NET to retrieve the MRN STORY from ERT in the cloud or local deployed TREP. The use case can be a solution for the client who needs to implement standard tagging across their news repository, using PermID. Intelligent Tagging API also offers a socialTags with relevance scoring for the clients. The client can feed the output provided by the API to the external system for sentiment analysis.
 
 ## References
 
