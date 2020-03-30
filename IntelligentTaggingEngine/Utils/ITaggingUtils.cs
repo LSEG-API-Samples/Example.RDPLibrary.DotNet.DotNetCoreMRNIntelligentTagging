@@ -27,7 +27,7 @@ namespace IntelligentTagging.Utils
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("text/raw");
             request.Content.Headers.Add("X-AG-Access-Token", appKey);
             request.Content.Headers.Add("x-calais-selectiveTags", "company,person,industry,socialtags,topic,country");
-            request.Content.Headers.Add("omitOutputtingOriginalText", "false");
+            request.Content.Headers.Add("omitOutputtingOriginalText", "true");
             request.Content.Headers.Add("outputformat", "application/json");
 
 

@@ -614,63 +614,40 @@ Below is a sample output when running the sample app. It will show a news conten
 
 ```
 ========================= Story update=======================
-GUID:ACSrp01pa_2003246aLL09i9Df78AyzlCInXK43cD1dLg40CzcSOhn
-AltId:nACSrp01pa
-Headline:Loop Insights Releases Company Outlook for 2020
+GUID:KLSxZvyra_2003252aUqPvtEddJWaSs5T2gpGiwIHm6KXM3epSoj8E
+AltId:nKLSxZvyra
+Headline:Changes In Substantial Shareholder's Interest - Changes in Sub. S-hldr's Int (Section 138 of CA 2016)(BIOALPHA HOLDINGS BHD)
 
-Body:
-VANCOUVER, BC / ACCESSWIRE / March 24, 2020 / Loop Insights Inc. (TSX.V:MTRX)
-(the "Company" or "Loop") maintains a positive outlook for the year ahead.
-Retailers are already working to rebuild their businesses during these
-unprecedented times, and Loop is here to assist them. Loop is focused on
-bringing new technologies and tools to brick and mortar retail helping global
-businesses recover and create new profitable strategies.
-
-A message from Loop's CEO, Rob Anson:
-
-The Covid-19 crisis has shaken the market unlike we've ever seen. During this
-time, Loop's team is working remotely and fully operational. We have created a
-strong educational strategy, for our customers, that includes regular delivery
-of press releases, blogs, social media content, videos, and podcasts. Over the
-next months, expect to see consistent, engaging updates from Loop with a
-steady news flow on company progress.
-
-...
-
-This news release contains certain statements which constitute forward-looking
-statements or information. Such forward-looking statements are subject to
-numerous risks and uncertainties, some of which are beyond Loop's control,
-including the impact of general economic conditions, industry conditions, and
-competition from other industry participants, stock market volatility and the
-ability to access sufficient capital from internal and external sources.
-Although Loop believes that the expectations in its forward-looking statements
-are reasonable, they are based on factors and assumptions concerning future
-events which may prove to be inaccurate. Those factors and assumptions are
-based upon currently available information. Such forward-looking statements
-are subject to known and unknown risks, uncertainties and other factors that
-could influence actual results or events and cause actual results or events to
-differ materially from those stated, anticipated or implied in the
-forward-looking statements. As such, readers are cautioned not to place undue
-reliance on the forward-looking statements, as no assurance can be provided as
-to future results, levels of activity or achievements. The forward-looking
-statements contained in this news release are made as of the date of this news
-release and, except as required by applicable law, Loop does not undertake any
-obligation to publicly update or to revise any of the included forward-looking
-statements, whether as a result of new information, future events or
-otherwise. The forward-looking statements contained in this document are
-expressly qualified by this cautionary statement. Trading in the securities of
-Loop should be considered highly speculative. There can be no assurance that
-Loop will be able to achieve all or any of its proposed objectives.
-
-Neither the TSX Venture Exchange nor it's Regulation Services Provider (as
-that term is defined in the policies of the TSX Venture Exchange) accepts
-responsibility for the adequacy or accuracy of this release.
-
-SOURCE: Loop Insights Inc.
-View source version on accesswire.com:
-https://www.accesswire.com/582232/Loop-Insights-Releases-Company-Outlook-for-2020
-
-Copyright 2020 ACCESSWIRE. All Rights Reserved.
+Body:Company Name                                  : BIOALPHA HOLDINGS BHD
+Stock Code                                    : 0179 (RIC : BIOA.KL)
+Changes in Sub. S-hldr's Int (Section 138 of CA 2016)
+Name of Substantial Shareholder               : HON TIAN KOK@WILLIAM
+Address                                       : -
+Identification Code                           : -
+Nationality                                   : Malaysia
+Description For Class And Nominal             : Ordinary shares
+Registered Holder                             : You are advised to read the entire contents of the announcement or
+attachment.To read the entire contents of the announcement or attachment,please
+access the Bursa website at http://www.bursamalaysia.com
+Effective Date                                : 2020/03/24
+No. of Shares Acquired / Disposed             : 100000
+Price Transacted                              : 0.000
+Acquired / Disposed                           : A
+Value Indicator                               : 0
+Description for Other type of Transaction     : 
+Circumstances By Reason                       : Acquisition of 100,000 ordinary by his spouse, Lim Yan Leng via open market.
+Nature Of Interest                            : Indirect Interest
+Consideration                                 : 
+Total no. of shares after change              : 112320900
+Total No Of Shares Direct (units)             : 111000900 (units)
+Total No Of Shares Direct (%)                 : 12.961 (%)
+Total No Of Shares Indirect/Deemed Interest (units) : 1320000 (units)
+Total No Of Shares Indirect/Deemed Interest (%) : 0.155 (%)
+Date of Change                                : 2020/03/25
+Remarks                                       : 
+You are advised to read the entire contents of the announcement or attachment.
+To read the entire contents of the announcement or attachment, please access
+the Bursa website at http://www.bursamalaysia.com
 ==============================================================
 
 ============Intelligent Tagging Output =================
@@ -684,120 +661,94 @@ permid:505062
 
 ===================
 
+
 ===========Social Tags List==========
 TypeGroup:socialTag
 Type:
 ID:1
-Name:[Communication]
+Name:[Equity securities]
 ForEndUserDisplay:true
 Importance:1
-OriginalValue:Communication
+OriginalValue:Equity securities
 
 TypeGroup:socialTag
 Type:
 ID:2
-Name:[Forward-looking statement]
+Name:[Stock market]
 ForEndUserDisplay:true
 Importance:1
-OriginalValue:Forward-looking statement
+OriginalValue:Stock market
 
 TypeGroup:socialTag
 Type:
 ID:3
-Name:[Microsoft Kin]
+Name:[Share]
 ForEndUserDisplay:true
 Importance:1
-OriginalValue:Microsoft Kin
+OriginalValue:Share (finance)
 
 TypeGroup:socialTag
 Type:
 ID:4
-Name:[Control theory]
+Name:[Bursa]
 ForEndUserDisplay:true
 Importance:2
-OriginalValue:Control theory
+OriginalValue:Bursa
 
-TypeGroup:socialTag
-Type:
-ID:5
-Name:[Academic disciplines]
-ForEndUserDisplay:true
-Importance:2
-OriginalValue:Academic disciplines
-
-TypeGroup:socialTag
-Type:
-ID:6
-Name:[Applied mathematics]
-ForEndUserDisplay:true
-Importance:2
-OriginalValue:Applied mathematics
-
-TypeGroup:socialTag
-Type:
-ID:7
-Name:[Fields of mathematics]
-ForEndUserDisplay:true
-Importance:2
-OriginalValue:Fields of mathematics
 
 =====================================
 
 ===========Person Entity List==========
 TypeGroup:entities
 Type:Person
-Name:Cathy Hume
+Name:Lim Yan Leng
 ForEndUserDisplay:true
-confidencelevel:0.407
+confidencelevel:0.655
 persontype:N/A
-FirstName:Cathy
-LastName:Hume
+FirstName:Lim
+LastName:Leng
 nationality:N/A
-_typeReference:http://s.opencalais.com/1/type/em/e/Person
-permid:https://permid.org/1-404011
-commonname:Cathy Hume
+_typeReference:Person
+permid:1-404011
+commonname:Lim Yan Leng
 relevance:0.2
 confidence:
-        statisticalfeature:0.507
-        dblooku:0.0
-        resolutione:0.0
-        aggregate:0.407
+	statisticalfeature:0.591
+	dblooku:0.0
+	resolutione:0.8836288
+	aggregate:0.655
 
-TypeGroup:entities
-Type:Person
-Name:Rob Anson
-ForEndUserDisplay:true
-confidencelevel:0.407
-persontype:N/A
-FirstName:Rob
-LastName:Anson
-nationality:N/A
-_typeReference:http://s.opencalais.com/1/type/em/e/Person
-permid:https://permid.org/1-404011
-commonname:Rob Anson
-relevance:0.2
-confidence:
-        statisticalfeature:0.507
-        dblooku:0.0
-        resolutione:0.0
-        aggregate:0.407
 
 =======================================
 
 ===============Company Entity===========
 TypeGroup:entities
 Type:Company
-Name:Loop Insights Inc.
-ForEndUserDisplay:true
-confidencelevel:0.991
+Name:BIOALPHA HOLDINGS BHD
+ForEndUserDisplay:false
+confidencelevel:0.928
 recongizedas:name
-_typeReference:http://s.opencalais.com/1/type/em/e/Company
+_typeReference:Company
 relevance:0.8
 confidence:
-        statisticalfeature:0.999
-        dblooku:0.0
-        resolutione:0.4679013
-        aggregate:0.991
+	statisticalfeature:0.788
+	dblooku:0.0
+	resolutione:1.0
+	aggregate:0.928
+
+TypeGroup:entities
+Type:Company
+Name:BIOA.KL
+ForEndUserDisplay:true
+confidencelevel:1.0
+recongizedas:ric
+_typeReference:Company
+relevance:0.8
+confidence:
+	statisticalfeature:0.644
+	dblooku:0.0
+	resolutione:1.0
+	aggregate:1.0
 
 ========================================
 ```
