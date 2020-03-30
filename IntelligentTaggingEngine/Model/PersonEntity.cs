@@ -39,12 +39,12 @@ namespace IntelligentTagging.Model
         }
    
         [JsonProperty("permid")]
-        private string _permid;
+        private string _permId;
 
         public string PermId
         {
-            get => ITaggingUtils.UriLastPart(_permid);
-            set => _permid = value;
+            get => ITaggingUtils.UriLastPart(_permId);
+            set => _permId = value;
         }
 
         [JsonProperty("relevance")]

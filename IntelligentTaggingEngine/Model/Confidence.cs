@@ -22,7 +22,7 @@ namespace IntelligentTagging.Model
         {
             var strBuilder = new StringBuilder();
             strBuilder.Append($"\tstatisticalfeature:{StatisticalFeature}\n");
-            strBuilder.Append($"\tdblooku:{DbLookup}\n");
+            strBuilder.Append($"\tdblookup:{DbLookup}\n");
             strBuilder.Append($"\tresolutione:{Resolution}\n");
             strBuilder.Append($"\taggregate:{Aggregate}\n");
 
