@@ -143,7 +143,7 @@ namespace MRNIntelligentTagging
             Console.WriteLine($"Body:{mrnobj.Body}");
             Console.WriteLine("==============================================================");
             if(mrnobj.Language.ToLower() == "en")
-                 GetMetaData(mrnobj, "XgsGDtwDlQktLKHoDEOIkTGXVGMC7k4D");
+                 GetMetaData(mrnobj, "<API KEY>");
         }
 
         private static void GetMetaData(StoryData storyData,string appKey)
