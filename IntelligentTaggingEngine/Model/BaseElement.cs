@@ -5,6 +5,11 @@ using Newtonsoft.Json.Linq;
 
 namespace IntelligentTagging.Model
 {
+    /// <summary>
+    /// BasedElement is a generic class implement IMetaDat interface.
+    /// It contains a share property for tag and entity class so we use this class to deserialize a based object.
+    /// We use this class to check TypeGroup and Type of element and tag before deserialize the data to specific class.
+    /// </summary>
     public class BaseElement : IMetaData
     {
         public string TypeGroup { get; set; }

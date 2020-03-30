@@ -6,6 +6,9 @@ using Newtonsoft.Json.Linq;
 
 namespace IntelligentTagging.Model
 {
+    /// <summary>
+    /// LanguageElement is a class to holds language and permid of the output from Intelligent Tagging.
+    /// </summary>
     public class LanguageElement : IMetaData
     {
         public string TypeGroup { get; set; }

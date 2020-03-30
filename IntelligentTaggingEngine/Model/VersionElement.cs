@@ -5,6 +5,9 @@ using Newtonsoft.Json.Linq;
 
 namespace IntelligentTagging.Model
 {
+    /// <summary>
+    /// VersionElement contains a list of version info which is a list of string
+    /// </summary>
     public class VersionElement : IMetaData
     {
         public string TypeGroup { get; set; }

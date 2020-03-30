@@ -6,6 +6,9 @@ using Newtonsoft.Json.Linq;
 
 namespace IntelligentTagging.Model
 {
+    /// <summary>
+    /// SocialTagElement is a specific class represent a fields from Intelligent Tagging JSON message which contains metadata for social tag.
+    /// </summary>
     public class SocialTagElement : IMetaData
     {
         public string TypeGroup { get; set; }

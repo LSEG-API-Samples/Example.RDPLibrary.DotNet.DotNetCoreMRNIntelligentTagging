@@ -6,7 +6,10 @@ using Newtonsoft.Json.Linq;
 
 namespace IntelligentTagging.Model
 {
-    public class PersonEntityElement : IMetaData
+    /// <summary>
+    /// CompanyEntity is a specific class represent a fields from Intelligent Tagging JSON message which contains Entity for Company metadata
+    /// </summary>
+    public class CompanyEntity : IMetaData
     {
         public string TypeGroup { get; set; }
         public string Type { get; set; }
@@ -15,33 +18,16 @@ namespace IntelligentTagging.Model
         IDictionary<string, JToken> IMetaData._Attribute { get; set; }
         [JsonProperty("confidencelevel")]
         public string ConfidentceLevel { get; set; }
-        [JsonProperty("persontype")]
-        public string PersonType { get; set; }
-        [JsonProperty("firstname")]
-        public string FirstName { get; set; }
-        [JsonProperty("lastname")]
-        public string LastName { get; set; }
-        [JsonProperty("nationality")]
-        public string Nationality { get; set; }
-        [JsonProperty("commonname")]
-        public string CommonName { get; set; }
+        [JsonProperty("recognizedas")]
+        public string Recognizedas { get; set; }
 
-        [JsonProperty("_typeReference")] 
+        [JsonProperty("_typeReference")]
         private string _typeReference;
 
         public string TypeReference
         {
             get => ITaggingUtils.UriLastPart(_typeReference);
             set => _typeReference = value;
-        }
-   
-        [JsonProperty("permid")]
-        private string _permid;
-
-        public string PermId
-        {
-            get => ITaggingUtils.UriLastPart(_permid);
-            set => _permid = value;
         }
 
         [JsonProperty("relevance")]
@@ -56,13 +42,8 @@ namespace IntelligentTagging.Model
             strBuilder.Append($"Name:{Name}\n");
             strBuilder.Append($"ForEndUserDisplay:{ForEndUserDisplay}\n");
             strBuilder.Append($"confidencelevel:{ConfidentceLevel}\n");
-            strBuilder.Append($"persontype:{PersonType}\n");
-            strBuilder.Append($"FirstName:{FirstName}\n");
-            strBuilder.Append($"LastName:{LastName}\n");
-            strBuilder.Append($"nationality:{Nationality}\n");
+            strBuilder.Append($"recongizedas:{Recognizedas}\n");
             strBuilder.Append($"_typeReference:{TypeReference}\n");
-            strBuilder.Append($"permid:{PermId}\n");
-            strBuilder.Append($"commonname:{CommonName}\n");
             strBuilder.Append($"relevance:{Relevance}\n");
             strBuilder.Append($"confidence:\n");
             strBuilder.Append(ConfidenceObject);

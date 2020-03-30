@@ -4,6 +4,10 @@ using Newtonsoft.Json;
 
 namespace IntelligentTagging.Model
 {
+
+    /// <summary>
+    /// Represents Confidence value of the Entity from the Intelligent Tagging API
+    /// </summary>
     public class Confidence
     {
         [JsonProperty("statisticalfeature")]

@@ -15,6 +15,10 @@ namespace MRNIntelligentTagging
 {
     class Program
     {
+        /// <summary>
+        /// TREPCredential is a region to set account for use the sample app with local deployed TREP server.
+        /// You need to specify DACS user and set WebSocket Server on ADS.
+        /// </summary>
         #region TREPCredential
             private const string TREPUser = "<DACS User>";
             private const string appID = "256";
@@ -22,6 +26,9 @@ namespace MRNIntelligentTagging
             private const string WebSocketHost = "<Websocket Server IP>:<Websocket Port> eg. 192.168.27.46:15000";
         #endregion
 
+        /// <summary>
+        /// RDPUserCredntial is a region to set Username and Password with the Application key in case that you want to use the sample app with ERT in Cloud.
+        /// </summary>
         #region RDPUserCredential
         private const string RDPUser = "<RDP User/Email>";
         private const string RDPPassword = "<RDP Password>";
@@ -116,9 +123,13 @@ namespace MRNIntelligentTagging
 
             Console.WriteLine("Stop and Quit the applicaiton");
         }
-      
+        /// <summary>
+        /// Callback function to process MRN Story update. It returns JSON message in JObject class.
+        /// </summary>
+        /// <param name="msg"></param>
         private static void ProcessNewsContent(JObject msg)
         {
+            if (msg == null) throw new ArgumentNullException(nameof(msg));
             // Print JSON plain text
             //System.Console.WriteLine("***************** RAW JSON Data *******************");
             //System.Console.WriteLine(msg);
@@ -155,7 +166,10 @@ namespace MRNIntelligentTagging
 
             }
         }
-
+        /// <summary>
+        /// DumpTagging is a function to print a known tag and entity such as Person and Company to console output.
+        /// </summary>
+        /// <param name="tagObj"> is Intelligent Tagging output in JObject class</param>
         private static void DumpTagging(JObject tagObj)
         {
             Console.WriteLine(">>>>>>>>>>>>>>>>>>>>Intelligent Tagging Output <<<<<<<<<<<<<<<<<<<<<<");

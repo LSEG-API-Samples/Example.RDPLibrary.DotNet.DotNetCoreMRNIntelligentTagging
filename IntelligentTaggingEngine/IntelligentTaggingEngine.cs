@@ -6,19 +6,30 @@ using Newtonsoft.Json.Linq;
 
 namespace IntelligentTagging
 {
+    /// <summary>
+    /// IntelligentTaggingParser is a class implement parser to parse a JSON message which represent a tag and entity Intelligent Tagging output.
+    /// </summary>
     public class IntelligentTaggingParser
     {
-     
-        public IntelligentTaggingParser(JObject jsondata)
+        /// <summary>
+        /// A constructor for initialize IntelligentTaggingParser class you need to pass JObject to the constructor.
+        /// </summary>
+        /// <param name="jsonData">JObject contain JSON message</param>
+        public IntelligentTaggingParser(JObject jsonData)
         {
-            Parse(jsondata);
+            Parse(jsonData);
         }
         private readonly IDictionary<string,IMetaData> _elementList=new Dictionary<string, IMetaData>();
+        /// <summary>
+        /// LanguageTag is LanguageElement from Intelligent Tagging output.
+        /// </summary>
         public LanguageElement LanguageTag
         {
             get { return (LanguageElement)_elementList.Select(x => x).FirstOrDefault(y => y.Value.TypeGroup == "language").Value; }
         }
-
+        /// <summary>
+        /// Versions is a list of version string from Intelligent Tagging output.
+        /// </summary>
         public IList<string> Versions
         {
             get
@@ -26,17 +37,33 @@ namespace IntelligentTagging
                 return _elementList.Where(y => y.Value.TypeGroup == "versions").Select(x => ((VersionElement)x.Value).Version).FirstOrDefault();
             }
         }
-
+        /// <summary>
+        /// Return all elements inside Intelligent Tagging JSON message.
+        /// </summary>
         public IDictionary<string, IMetaData> ITData => _elementList;
-        public IList<PersonEntityElement> PersonElements => _elementList.Where(y => y.Value.TypeGroup == "entities" && y.Value.Type == "Person")
-                    .Select(x => (PersonEntityElement)x.Value).ToList<PersonEntityElement>();
 
-        public IList<CompanyEntityElement> CompanyElements => _elementList.Where(y => y.Value.TypeGroup == "entities" && y.Value.Type == "Company")
-            .Select(x => (CompanyEntityElement)x.Value).ToList<CompanyEntityElement>();
+        /// <summary>
+        /// PersonElements represent a list of PersonEntity from Intelligent Tagging output.
+        /// </summary>
+        public IList<PersonEntity> PersonElements => _elementList.Where(y => y.Value.TypeGroup == "entities" && y.Value.Type == "Person")
+                    .Select(x => (PersonEntity)x.Value).ToList<PersonEntity>();
 
+        /// <summary>
+        /// CompanyElements represent a list of CompanyEntity from Intelligent Tagging output.
+        /// </summary>
+        public IList<CompanyEntity> CompanyElements => _elementList.Where(y => y.Value.TypeGroup == "entities" && y.Value.Type == "Company")
+            .Select(x => (CompanyEntity)x.Value).ToList<CompanyEntity>();
+
+        /// <summary>
+        /// SocialTags represent a list of SocialElement or social tag from Intelligent Tagging output.
+        /// </summary>
         public IList<SocialTagElement> SocialTags => _elementList.Where(y => y.Value.TypeGroup == "socialTag").Select(x => (SocialTagElement)x.Value).ToList<SocialTagElement>();
         public IList<string> SocialTagNames => _elementList.Where(y => y.Value.TypeGroup == "socialTag").Select(x => x.Value.Name).ToList<string>();
 
+        /// <summary>
+        /// Internal function to parse Intelligent Tagging from JObject.
+        /// </summary>
+        /// <param name="taggingObject"></param>
         private void Parse(JObject taggingObject)
         {
             foreach (var element in taggingObject )
@@ -70,13 +97,13 @@ namespace IntelligentTagging
                             {
                                 case @"Person":
                                 {
-                                    var newObj = element.Value.ToObject<PersonEntityElement>();
+                                    var newObj = element.Value.ToObject<PersonEntity>();
                                     _elementList.Add(element.Key, newObj);
                                     break;
                                 }
                                 case @"Company":
                                 {
-                                    var newObj = element.Value.ToObject<CompanyEntityElement>();
+                                    var newObj = element.Value.ToObject<CompanyEntity>();
                                     _elementList.Add(element.Key, newObj);
                                     break;
                                 }
