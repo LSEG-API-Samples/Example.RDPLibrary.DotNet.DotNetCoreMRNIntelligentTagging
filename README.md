@@ -32,17 +32,15 @@ Below is a sample code to use __MachineReadableNews__ for retrieving and handlin
 
 ```C#
 
-      using (MachineReadableNews mrnNews =ContentFactory.CreateMachineReadableNews(new MachineReadableNews.Params()
-              .Session(session)
-              .WithNewsDatafeed("MRN_STORY")
-              .OnError((e,msg)=>Console.WriteLine(msg))
-              .OnStatus((e, msg) => Console.WriteLine(msg))
-              .OnNews((e, msg) => ProcessNewsContent(msg))))
-      {
-          mrnNews.Open();
-          Thread.Sleep(runtime);
-      }
+ using var mrn = MachineReadableNews.Definition()
+                        .OnError((stream, err) => Console.WriteLine($"{DateTime.Now}:{err}"))
+                        .OnStatus((stream, status) => Console.WriteLine(status))
+                        .NewsDatafeed(MachineReadableNews.Datafeed.MRN_STORY)
+                        .OnNewsStory((stream, newsItem) => ProcessNewsContent(newsItem.Raw));
+                mrn.Open();
+                Thread.Sleep(runtime);
 ```
+
 In the sample app, we wish to extract the news content which contains the English language code. Therefore, we need to filter the message by checking the __language__ code in the JSON message. 
 
 Below is a sample of JSON message for the MRN Story, which contains English language code "en."

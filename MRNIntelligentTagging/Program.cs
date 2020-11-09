@@ -6,7 +6,7 @@ using System.Net.Http;
 using Refinitiv.DataPlatform;
 using Refinitiv.DataPlatform.Core;
 using Refinitiv.DataPlatform.Content;
-using Refinitiv.DataPlatform.Content.Streaming;
+using Refinitiv.DataPlatform.Content.News;
 using Newtonsoft.Json.Linq;
 using IntelligentTagging;
 using MRNIntelligentTagging.Model;
@@ -30,10 +30,10 @@ namespace MRNIntelligentTagging
         /// RDPUserCredntial is a region to set Username and Password with the Application key in case that you want to use the sample app with ERT in Cloud.
         /// </summary>
         #region RDPUserCredential
-        private const string RDPUser = "<RDP User/Email>";
-        private const string RDPPassword = "<RDP Password>";
-        private const string RDPAppKey = "<App Key>";
- 
+            private const string RDPUser = "<RDP User/Email>";
+            private const string RDPPassword = "<RDP Password>";
+            private const string RDPAppKey = "<App Key>";
+
         #endregion
 
         // Set useRDP to true to connecting to ERT in cloud and use login from RDPUserCredential region.
@@ -43,8 +43,8 @@ namespace MRNIntelligentTagging
         private static readonly bool redirectOutputToFile = false;
 
         private static Session.State _sessionState = Session.State.Closed;
-        private static int runtime=60000000;
-        static void Main(string[] args)
+        private static readonly int runtime=60000000;
+        static void Main()
         {
             Console.WriteLine("Start retrieving MRN Story data. Press Ctrl+C to exit");
             // Set RDP.NET Logger level to Trace
@@ -89,7 +89,7 @@ namespace MRNIntelligentTagging
             {
                 System.Console.WriteLine("Start RDP PlatformSession");
                 session = CoreFactory.CreateSession(new PlatformSession.Params()
-                    .OAuthGrantType(new GrantPassword().UserName(RDPUser)
+                    .WithOAuthGrantType(new GrantPassword().UserName(RDPUser)
                         .Password(RDPPassword))
                     .AppKey(RDPAppKey)
                     .WithTakeSignonControl(true)
@@ -104,14 +104,14 @@ namespace MRNIntelligentTagging
             if(_sessionState==Session.State.Opened)
             {
                 System.Console.WriteLine("Session is now Opened");
+                // Validate the selection
+
                 System.Console.WriteLine("Sending MRN_STORY request");
-                using var mrnNews =ContentFactory.CreateMachineReadableNews(new MachineReadableNews.Params()
-                    .Session(session)
-                    .WithNewsDatafeed("MRN_STORY")
-                    .OnError((e,msg)=>Console.WriteLine(msg))
-                    .OnStatus((e, msg) => Console.WriteLine(msg))
-                    .OnNews((e, msg) => ProcessNewsContent(msg)));
-                mrnNews.Open();
+                using var mrn = MachineReadableNews.Definition().OnError((stream, err) => Console.WriteLine($"{DateTime.Now}:{err}"))
+                        .OnStatus((stream, status) => Console.WriteLine(status))
+                        .NewsDatafeed(MachineReadableNews.Datafeed.MRN_STORY)
+                        .OnNewsStory((stream, newsItem) => ProcessNewsContent(newsItem.Raw));
+                mrn.Open();
                 Thread.Sleep(runtime);
             }
 
