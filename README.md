@@ -2,15 +2,17 @@
 
 ## Introduction
 
-[Intelligent Tagging REST API](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api) can use to automatically analyzes your input text. And then identify and tag mentions (text strings) of things like companies, people, deals, geographical locations, industries, physical assets, organizations, products, events, etc. based on a list of predefined metadata types. Moreover, it can assigns tags such as topic tags, social tags, industry tags, and slugline tags that describe what the input document is about as a whole. 
+**Update**: October 2021.
 
-There are some use cases that users want to extract the tags(e.g., social tags) and metadata like the Company and Person entity with the relevance and confidence score from news content that came with the [MRN Story Real-Time](https://developers.refinitiv.com/sites/default/files/ThomsonReutersMRNElektronDataModelsv210_2.pdf) data and MRN achieved(custom solution provided by Elektron). Then it can feed the output from Intelligent Tagging API to their sentiment analysis system. This article will describe steps to use the REST API to analyze the input text from the MRN news story retrieved from the deployed TREP server or [Elektron Real-Time(ERT)](https://developers.refinitiv.com/elektron/websocket-api/learning?content=63493&type=learning_material_item) in cloud. We will create a .NET Core sample application that is using RDP.NET API to communicating and retrieving MRN News Story from the server. And then, extract the news body from the MRN JSON message and pass it to the Intelligent Tagging API to identify tags and relevant metadata.
+[Intelligent Tagging REST API](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api) can use to automatically analyzes your input text. And then identify and tag mentions (text strings) of things like companies, people, deals, geographical locations, industries, physical assets, organizations, products, events, etc. based on a list of predefined metadata types. Moreover, it can assigns tags such as topic tags, social tags, industry tags, and slugline tags that describe what the input document is about as a whole. 
+
+There are some use cases that users want to extract the tags(e.g., social tags) and metadata like the Company and Person entity with the relevance and confidence score from news content that came with the [MRN Story Real-Time](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-implementation-guide) data and MRN achieved (custom solution provided by Refinitiv Real-Time). Then it can feed the output from Intelligent Tagging API to their sentiment analysis system. This article will describe steps to use the REST API to analyze the input text from the MRN news story retrieved from the deployed Refinitiv Real-Time Distribution System server or [Refinitiv Real-Time -- Optimized (RTO)](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials) in cloud. We will create a .NET Core sample application that is using RDP.NET API to communicating and retrieving MRN News Story from the server. And then, extract the news body from the MRN JSON message and pass it to the Intelligent Tagging API to identify tags and relevant metadata.
 
 ## Prerequisites
 
-* Please read [Intelligent Tagging quick start guide](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api/quick-start) before reading this article. You need to access the link from the quick start guide to register for a free account and create your API key. It required the key for API call.
-* Please read [this article](https://developers.refinitiv.com/article/create-mrn-real-time-news-story-consumer-app-using-net-core-and-rdpnet-library), you need to understand how to use RDP.NET library to retrieve MRN Story data.
-* You need ERT in cloud account or deployed TREP server(version 3.2 or higher) with a DACS User with permission to request MRN STORY data.
+* Please read [Intelligent Tagging quick start guide](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/quick-start) before reading this article. You need to access the link from the quick start guide to register for a free account and create your API key. It required the key for API call.
+* Please read [this article](https://developers.refinitiv.com/en/article-catalog/article/create-mrn-real-time-news-story-consumer-app-using-net-core-and-rdpnet-library), you need to understand how to use RDP.NET library to retrieve MRN Story data.
+* You need RTO account or deployed Refinitiv Real-Time Distribution System server(version 3.2 or higher) with a DACS User with permission to request MRN STORY data.
 * You need to install .NET Core SDK. Highly recommended version 3.0 or higher versions.
 * [Visual Studio Code](https://code.visualstudio.com/)/Text editor or Visual Studio 2017/2019 to open solution/project and modify codes.
 
@@ -18,7 +20,7 @@ There are some use cases that users want to extract the tags(e.g., social tags) 
 
 There are three main steps in our sample application. 
 
-1) Requesting MRN Story data from ERT in cloud or deployed TREP server via the WebSocket connection. These steps will use RDP.NET SDK, and it provides a callback method that returns the MRN JSON data. 
+1) Requesting MRN Story data from RTO or deployed Refinitiv Real-Time Distribution System server via the WebSocket connection. These steps will use RDP.NET SDK, and it provides a callback method that returns the MRN JSON data. 
 
 2) Using Intelligent Tagging REST API with the MRN news content.
 
@@ -26,7 +28,7 @@ There are three main steps in our sample application.
 
 ### Step 1 Requesting MRN Story data
 
-To make it short, we will modify the sample application provided in the article [Create MRN Real-Time News Story Consumer app using .NET Core and RDP.NET Library](https://developers.refinitiv.com/article/create-mrn-real-time-news-story-consumer-app-using-net-core-and-rdpnet-library) to retrieve the MRN Story data. Then we can extract the news body from the JSON message and pass it to the Intelligent Tagging REST API. Thus we will not describe the background of MRN and how to use RDP.NET in this article. 
+To make it short, we will modify the sample application provided in the article [Create MRN Real-Time News Story Consumer app using .NET Core and RDP.NET Library](https://developers.refinitiv.com/en/article-catalog/article/create-mrn-real-time-news-story-consumer-app-using-net-core-and-rdpnet-library) to retrieve the MRN Story data. Then we can extract the news body from the JSON message and pass it to the Intelligent Tagging REST API. Thus we will not describe the background of MRN and how to use RDP.NET in this article. 
 
 Below is a sample code to use __MachineReadableNews__ for retrieving and handling MRN Story update.
 
@@ -120,7 +122,7 @@ The API call to tag content is made via a simple HTTP REST interface. Below are 
 
 * HTTP Request Content: Text from a news content
 
-We will use the above headers in our sample app. You can find additional headers with the details about the value you can set from [Input Headers document](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api/docs?content=76840&type=documentation_item). Please refer to the [online document](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api/quick-start) in case that there might be the change of endpoint for your package type.
+We will use the above headers in our sample app. You can find additional headers with the details about the value you can set from [Input Headers document](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation). Please refer to the [online document](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/quick-start) in case that there might be the change of endpoint for your package type.
 
 Below is a sample of C# codes to call the REST API tag content from the MRN Story body. We set the output format to "__application/json__" because we need the output in JSON format. Then we can use the JSON.NET library to parse specific metadata such as social tag, company, person and its scores from the JSON output.
 
@@ -324,7 +326,7 @@ The following JSON message is sample output from Intelligent Tagging API call.
 ```
 The whole JSON message consists of a list of JSON objects for tag and entity like socialTag, Person and Company entity. Please note that result in the output depends on the input text and type of account you are using. 
  
-The application can use JSON.NET to parse the object and check key "_typeGroup"  to identify the type of the object. Then the application can get specific property such as the confidence score, importance level from the key in JSON object. You can find available properties for each type of tag metadata from [Intelligent Tagging Document](https://developers.refinitiv.com/open-permid/calais-tagging-restful-api/docs?content=76844&type=documentation_item)
+The application can use JSON.NET to parse the object and check key "_typeGroup"  to identify the type of the object. Then the application can get specific property such as the confidence score, importance level from the key in JSON object. You can find available properties for each type of tag metadata from [Intelligent Tagging Document](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation)
 
 ### Step 3 Parsing a SocialTag and metadata from the response message
 
@@ -587,7 +589,7 @@ You can download full source codes with projects from [GitHub](https://github)
 
 The sample application is a .NET Core console application so that you can build and run it on a platform supported by .NET Core SDK.
 
-Please modify Program.cs and add your username and password in either region TREPCredential or RDPUserCredential. Default mode will use the RDP account, and you can change useRDP to false if you want to test with a local deployed TREP server.
+Please modify Program.cs and add your username and password in either region ```RTDSCredential``` or ```RDPUserCredential```. Default mode will use the RDP account, and you can change ```useRDP``` to false if you want to test with a local deployed Refinitiv Real-Time Distribution System server.
 
 You can open a solution file MRNIntelligentTagging.sln on Visual Studio 2017 or 2019 and then build or publish(menu Build->Publish MRNIntelligentTagging) the console application.
 
@@ -754,21 +756,21 @@ Note that you can set __redirectOutputToFile__ in Program.cs to true if you want
 
 ## Summary 
 
-This article explains how to use Intelligent Tagging REST API getting tag metadata from a news content returned by MRN Story data. It also provides a sample application to demonstrate the API usage and provide a sample output from the REST API and how to extract the relevance tag and entity from the JSON output. The sample app uses RDP.NET to retrieve the MRN STORY from ERT in the cloud or local deployed TREP. The use case can be a solution for the client who needs to implement standard tagging across their news repository, using PermID. Intelligent Tagging API also offers a socialTags with relevance scoring for the clients. The client can feed the output provided by the API to the external system for sentiment analysis.
+This article explains how to use Intelligent Tagging REST API getting tag metadata from a news content returned by MRN Story data. It also provides a sample application to demonstrate the API usage and provide a sample output from the REST API and how to extract the relevance tag and entity from the JSON output. The sample app uses RDP.NET to retrieve the MRN STORY from RTO or local deployed Refinitiv Real-Time Distribution System. The use case can be a solution for the client who needs to implement standard tagging across their news repository, using PermID. Intelligent Tagging API also offers a socialTags with relevance scoring for the clients. The client can feed the output provided by the API to the external system for sentiment analysis.
 
 ## References
 
-* [Intelligent Tagging Quick Start Guide](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api/quick-start)
-* [Intelligent Tagging Case Studies](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api/docs?content=59392&type=documentation_item)
-* [Intelligent Tagging FAQ](https://developers.refinitiv.com/open-permid/intelligent-tagging-restful-api/docs?content=3575&type=documentation_item)
-* [Create MRN Real-Time News Story Consumer app using .NET Core and RDP.NET Library](https://developers.refinitiv.com/article/create-mrn-real-time-news-story-consumer-app-using-net-core-and-rdpnet-library)
-* [REFINITIV DATA PLATFORM LIBRARIES - AN INTRODUCTION](https://developers.refinitiv.com/refinitiv-data-platform/refinitiv-data-platform-libraries/docs?content=62446&type=documentation_item)
-* [The Refinitiv Data Platform Libraries for .NET (RDP.NET)](https://developers.refinitiv.com/refinitiv-data-platform/refinitiv-data-platform-libraries) 
-* [The Introduction to RDP Libraries document](https://developers.refinitiv.com/refinitiv-data-platform/refinitiv-data-platform-libraries/docs?content=62446&type=documentation_item)
+* [Intelligent Tagging Quick Start Guide](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/quick-start)
+* [Intelligent Tagging Case Studies](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation)
+* [Intelligent Tagging FAQ](https://developers.refinitiv.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation)
+* [Create MRN Real-Time News Story Consumer app using .NET Core and RDP.NET Library](https://developers.refinitiv.com/en/article-catalog/article/create-mrn-real-time-news-story-consumer-app-using-net-core-and-rdpnet-library)
+* [REFINITIV DATA PLATFORM LIBRARIES - AN INTRODUCTION](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/tutorials#introduction)
+* [The Refinitiv Data Platform Libraries for .NET (RDP.NET)](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) 
+* [The Introduction to RDP Libraries document](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/documentation)
 * [Refinitiv DataPlatform for .NET Nuget](https://www.nuget.org/packages/Refinitiv.DataPlatform/)
 * [Refinitiv DataPlatform Content Nuget](https://www.nuget.org/packages/Refinitiv.DataPlatform.Content/)
-* [Elektron Websocket](https://developers.refinitiv.com/elektron/websocket-api/quick-start)
-* [MRN DATA MODELS AND ELEKTRON IMPLEMENTATION GUIDE](https://developers.refinitiv.com/sites/default/files/ThomsonReutersMRNElektronDataModelsv210_2.pdf)
+* [Websocket API](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api)
+* [MRN Data Models Implementation Guide](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-implementation-guide)
 * [Newtonsoft JSON.NET document](https://www.newtonsoft.com/json/help/html/Introduction.htm)
 
 

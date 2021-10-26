@@ -16,18 +16,18 @@ namespace MRNIntelligentTagging
     class Program
     {
         /// <summary>
-        /// TREPCredential is a region to set account for use the sample app with local deployed TREP server.
+        /// RTDSCredential is a region to set account for use the sample app with local deployed RTDS server.
         /// You need to specify DACS user and set WebSocket Server on ADS.
         /// </summary>
-        #region TREPCredential
-            private const string TREPUser = "<DACS User>";
+        #region RTDSCredential
+            private const string RTDSUser = "<DACS User>";
             private const string appID = "256";
             private const string position = "<Your IP>/net";
             private const string WebSocketHost = "<Websocket Server IP>:<Websocket Port> eg. 192.168.27.46:15000";
         #endregion
 
         /// <summary>
-        /// RDPUserCredntial is a region to set Username and Password with the Application key in case that you want to use the sample app with ERT in Cloud.
+        /// RDPUserCredntial is a region to set Username and Password with the Application key in case that you want to use the sample app with RTO.
         /// </summary>
         #region RDPUserCredential
             private const string RDPUser = "<RDP User/Email>";
@@ -36,7 +36,7 @@ namespace MRNIntelligentTagging
 
         #endregion
 
-        // Set useRDP to true to connecting to ERT in cloud and use login from RDPUserCredential region.
+        // Set useRDP to true to connecting to RTO and use login from RDPUserCredential region.
         private static readonly bool useRDP = true;
         
         // Set redirectOutputToFile to redirect output to Output.txt under running directory
@@ -76,7 +76,7 @@ namespace MRNIntelligentTagging
                 System.Console.WriteLine("Start Deployed PlatformSession");
                 session = CoreFactory.CreateSession(new DeployedPlatformSession.Params()
                     .Host(WebSocketHost)
-                    .WithDacsUserName(TREPUser)
+                    .WithDacsUserName(RTDSUser)
                     .WithDacsApplicationID(appID)
                     .WithDacsPosition(position)
                     .OnState((s, state, msg) =>
