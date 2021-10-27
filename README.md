@@ -161,7 +161,7 @@ The following JSON message is sample output from Intelligent Tagging API call.
     "info": {
       "calaisRequestID": "fe2f8c19-8db0-8a01-70e7-fca923784d2e",
       "id": "http://id.opencalais.com/PXlKTZ0ztAnbLi8MZvcBxw",
-      "ontology": "http://mdaas-virtual-onecalais.int.thomsonreuters.com/owlschema/13.0.rc2/onecalais.owl.allmetadata.xml",
+      "ontology": "http://och1-lb/owlschema/8.2/onecalais.owl.allmetadata.xml",
       "docId": "http://d.opencalais.com/dochash-1/c1dbb7d5-9ea9-364e-9cae-e9be01b46df5",
       "document": "...",
       "docTitle": "",
