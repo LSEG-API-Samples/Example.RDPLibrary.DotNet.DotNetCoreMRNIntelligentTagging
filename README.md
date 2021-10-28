@@ -51,7 +51,7 @@ Below is a sample of JSON message for the MRN Story, which contains English lang
 {
     "altId": "nBSE4njFBT",
     "audiences": [ "NP:BSE" ],
-    "body": "Firstsource Solutions Ltd has informed BSE that the members of the Company have passed the resolution by way of Postal Ballot, under Clause 35A.\n\n \n\nhttp://pdf.reuters.com/pdfnews/pdfnews.asp?i=43059c3bf0e37541&u=urn:newsml:reuters.com:20150924:nBS E6yFYfg\n\n \n\n \n\nDouble click on the URL above to view the article.Please note that internet access is required. If you experience problem accessing the internet, please consult your network administrator or technical support\n\nLatest version of Adobe Acrobat reader is recommended to view PDF files. The latest version of the reader can be obtained from http://www.adobe.com/products/acrobat/readstep2.html\n\n",
+    "body": "Firstsource Solutions Ltd has informed BSE that the members of the Company have passed the resolution by way of Postal Ballot, under Clause 35A.\n\n \n\nhttp://pdf.refinitiv.com/pdfnews/pdfnews.asp?i=43059c3bf0e37541&u=urn:newsml:refinitiv.com:20150924:nBS E6yFYfg\n\n \n\n \n\nDouble click on the URL above to view the article.Please note that internet access is required. If you experience problem accessing the internet, please consult your network administrator or technical support\n\nLatest version of Adobe Acrobat reader is recommended to view PDF files. The latest version of the reader can be obtained from http://www.adobe.com/products/acrobat/readstep2.html\n\n",
     "firstCreated": "2015-09-24T15:41:50.000Z",
     "headline": "FIRSTSOURCE SOLUTIONS LTD. - Results of Postal Ballot (Clause 35A) <FISO.NS>",
     "id": "BSE4njFBT_1509242kv2m5neJzQ52U7adOPFd2fc4P6PMZ/X8yPsDxw",
@@ -361,16 +361,16 @@ It will show the output like the following sample.
 
 ```
 Social Tag Name:Financial software
-Social Tag Name:Thomson Reuters
+Social Tag Name:Refinitiv
 Social Tag Name:Companies
 Social Tag Name:Eikon
 Social Tag Name:Business
 Social Tag Name:Economy
 Social Tag Name:CNBC
-Social Tag Name:Reuters
+Social Tag Name:Refinitiv
 Social Tag Name:Westlaw
 Social Tag Name:Isan
-Entity Type:Company Name:Thomson Reuters
+Entity Type:Company Name:Refinitiv
 ```
 
 Anyway, our sample will create an interface named IMetaData, which is a based interface to create a more specific class for particular tag and entity. Then application just needs to check the value of the property named "_typeGroup" to identify what kind of class needs to use for deserializing from the JSON object.
